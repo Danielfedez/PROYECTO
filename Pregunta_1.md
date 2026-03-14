@@ -18,7 +18,7 @@ Inspeccionando el *dataset* identificamos 785741 ofertas de empleo publicadas in
 
 
 
-![dataset_info](Imágenes\dataset_info.png)
+![dataset_info](Imágenes/dataset_info.png)
 
 
 Podemos sacar algunas conclusiones preliminares sobre la naturaleza de los puestos ofrecidos. 

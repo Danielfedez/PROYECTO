@@ -1,17 +1,27 @@
-# 1. ¿Qué información puedo obtener de la base de datos?
+# 1. ¿Qué información puedo obtener del *dataset*
 
-Para acceder al documento con el código, [clicar aquí](proyectoo.ipynb)
+Para acceder al documento con el código, clica [aquí](Pregunta_1_code.ipynb)
 
-Lo primero que hago es inspeccionar la base de datos. Esta nos da información sobre 785741 ofertas de empleo publicadas internacionalmente, y de cada oferta se nos indican 17 características (nombre del rol, país de origen de la oferta, si es presencial o en remoto, fecha de publicación...)
+Lo primero que hacemos es importar las librerías que nos acompañarán en este y posteriores análisis. 
+
+```
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from datasets import load_dataset`
+```
+
+
+Inspeccionando el *dataset* identificamos 785741 ofertas de empleo publicadas internacionalmente, y de cada oferta se nos indican 17 características (nombre del rol, país de origen de la oferta, si es presencial o en remoto, fecha de publicación...)
 
 
 
 
+![dataset_info](Imágenes\dataset_info.png)
 
-<img src="df_info.png" width="350">
 
-
-Podemos sacar algunas estadísticas rápidas sobre la naturaleza de los puestos ofrecidos. 
+Podemos sacar algunas conclusiones preliminares sobre la naturaleza de los puestos ofrecidos. 
 
 
 
@@ -19,14 +29,18 @@ Podemos sacar algunas estadísticas rápidas sobre la naturaleza de los puestos 
 
 ## Qué roles son los más anunciados
 
-Comparo los distintos roles con su respectivo número de ofertas. Para ello defino la variable `job_counts` como los `value_counts()` actuando sobre la columna `job_title_short`.
+Comparamos los distintos roles con su respectivo número de ofertas. Definimos la variable `job_counts` como el recuento sobre la columna `job_title_short`. Representamos gráficamente con `seaborn`. 
 
 ```
 dataset = load_dataset("lukebarousse/data_jobs")
 df = dataset["train"].to_pandas()
+
 job_counts = df["job_title_short"].value_counts()
+
 job_counts = job_counts.reset_index(name="job_counts")
+
 total = job_counts["job_counts"].sum()
+
 job_counts["job_perc"] = job_counts["job_counts"]/total*100
 
 
@@ -42,22 +56,21 @@ for n, (count, perc) in enumerate(zip(job_counts['job_counts'], job_counts['job_
 plt.show()
 ``` 
 
-![Visualización](output.png)
+![Top_10_roles](Imágenes\Top_10_roles.png)
 
 Se observa una clara brecha entre los tres puestos con mayor demanda y el resto, representando estos primeros el 70,6% del total de ofertas publicadas. Es un resultado esperable ya que el núcleo del ecosistema de datos actual está formado principalmente por estos roles. 
 
-Es de suponer que las ofertas más abundantes correspondan a perfiles *junior/intermediate*, ya que existen roles específicamente *senior*, con mucha menos demanda (14,1% respecto al total) a causa de la menor necesidad de posiciones de liderazgo. 
+Es de suponer que las ofertas más abundantes corresponden a perfiles *junior/intermediate*, ya que existen roles específicamente *senior*, con mucha menos demanda (14,1% respecto al total) a causa de la menor necesidad de posiciones de liderazgo. 
 
 
-Roles como Business Analyst o Software Engineer rondan el 5%-6%, mientros otros como Machine Learning y Cloud Engineer suman en conjunto el 3,4% del total, posiblemente debido a que son nichos más especializados. 
+Roles como *Business Analyst* o *Software Engineer* rondan el 5%-6%, mientros otros como *Machine Learning* y *Cloud Engineer* suman en conjunto el 3,4% del total, posiblemente debido a que son nichos más especializados. 
 
 ## A qué países pertenecen estas ofertas
 
-Defino `job_country`como los 20 paises con mayor número de ofertas publicadas.
+Definimos `job_country` como los 20 países con mayor número de ofertas publicadas.
 
 ```
-job_country = df["job_country"].value_counts().head(20)
-job_country = job_country.reset_index(name="country_counts")
+job_country = df["job_country"].value_counts().head(20).reset_index(name="country_counts")
 
 sns.set_theme(style='ticks')
 sns.barplot(data=job_country, x='country_counts', y="job_country", hue="country_counts", palette='dark:b_r', legend=False)
@@ -69,16 +82,17 @@ plt.show()
 ```
 
 
-![ofertas_paises](ofertas_paises.png)
+![ofertas_paises](Imágenes\ofertas_paises.png)
 
 Estados Unidos lidera la lista de países con mayor demanda en ciencia de datos, siendo el epicentro de las grandes tecnológicas (*Big Tech*) y el desarrollo de IA. Siguiéndole está India, posiblemente por ser el principal destino de *outsourcing* para análisis de datos y soporte de ingeniería a gran escala. 
 
 
-## Qué compañías publican más ofertas
+## Qué empresas publican más ofertas
+
+Definimos `top_companies` y filtramos las 15 empresas con mayor oferta laboral.
 
 ```
-top_companies = df["company_name"].value_counts().head(15)
-top_companies = top_companies.reset_index(name="company_counts")
+top_companies = df["company_name"].value_counts().head(15).reset_index(name="company_counts")
 
 sns.set_theme(style='ticks')
 sns.barplot(data=top_companies, x='company_counts', y="company_name", hue="company_counts", palette='dark:b_r', legend=False)
@@ -88,16 +102,18 @@ plt.xlabel('Número de ofertas publicadas')
 plt.ylabel('')
 plt.show()
 ```
-![compaía](puestos_compañía.png)
+![puestos_por_empresa](Imágenes\puestos_por_empresa.png)
 
-Analizando los cinco primeros puestos cobra más relevancia el *outsourcing* y reclutamiento externo comentado anteriormente. No aparecen gigantes tecnológicos como Google o Meta, sino empresas cuyo modelo de negocio es encontrar talento para terceros. De igual forma, pero a la cola de la lista, aparecen Accenture i Deloitte, dos de las "Big Four".
+Analizando los cinco primeros puestos cobra más relevancia el *outsourcing* y reclutamiento externo comentado anteriormente. No aparecen gigantes tecnológicos como Google o Meta, sino empresas cuyo modelo de negocio es encontrar talento para terceros. De igual forma, pero a la cola de la lista, aparecen Accenture i Deloitte, dos de las "*Big Four*".
 
 Algunas empresas, como Citi o Capital One, representan al sector bancario, y otras como Walmart o UnitedHealth Group, cadenas de suministro o aseguraduras médicas, respectivamente. Se trata de compañías con gran alcance y con alta demanda de analistas. 
 
 
 ## Algunas características de los puestos
 
-En esta sección analizaré algunas condiciones de los puestos ofertados: si son presenciales o híbridos/remoto, si se requiere alguna carrera para poder acceder al puesto, y si incluyen seguro médico o no.
+En esta sección analizaremos algunas condiciones de los puestos ofertados: si son presenciales o remotos, si se requiere alguna carrera para poder acceder al puesto, y si incluyen seguro médico o no.
+
+Para visualizar estos datos usamos tres gráficos circulares, uno para cada condición laboral. Creamos un diccionario para poder unificar en un solo código las tres figuras.
 
 ```
 dict_column = {
@@ -116,7 +132,7 @@ plt.show()
 ```
 
 
-![features](job_features.png)
+![condiciones_trabajo](Imágenes\condiciones_trabajo.png)
 
 Se observa que, pese a que algunas empresas apuestan por el teletrabajo, el sector tiende a ser conservador, priorizando la presencialidad. Si bien es cierto que durante la pandemia de 2020 trabajar desde casa se volvió la norma, y existía la opinión generalizada de que dicho modelo prevalecería, los datos muestran que no ha sido así. 
 

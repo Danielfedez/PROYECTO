@@ -30,7 +30,22 @@ df_skills["skill_percent"] = df_skills["skill_count"]*100/total_skills
 df_percentage = df_skills[df_skills["skill_percent"] >= 5]``
 ```
 
-![optimal_skill](Imágenes/optimal_skill.png)
+| job_skills   |   skill_count |   median_salary |   skill_percent |
+|:-------------|--------------:|----------------:|----------------:|
+| sql          |          3079 |         92500   |        56.4954  |
+| excel        |          2135 |         84479   |        39.1743  |
+| python       |          1838 |         98500   |        33.7248  |
+| tableau      |          1657 |         95000   |        30.4037  |
+| r            |          1073 |         92527.5 |        19.6881  |
+| power bi     |          1042 |         90000   |        19.1193  |
+| sas          |          1006 |         90000   |        18.4587  |
+| word         |           523 |         80000   |         9.59633 |
+| powerpoint   |           518 |         85000   |         9.50459 |
+| sql server   |           336 |         92150   |         6.16514 |
+| oracle       |           332 |         95000   |         6.09174 |
+| azure        |           312 |        100000   |         5.72477 |
+| aws          |           294 |        100500   |         5.3945  |
+| go           |           288 |         90000   |         5.2844  |
 
 Una buena forma de visualizar estos datos es con un diagrama de dispersión, donde veamos la correlación entre abundancia y sueldo para cada habilidad. Hacemos algunos ajustes para que la comprensión del diagrama sea más clara. Importamos `adjustText` para que las etiquetas de las habilidades no se solapen.
 

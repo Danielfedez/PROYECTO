@@ -56,7 +56,7 @@ for n, (count, perc) in enumerate(zip(job_counts['job_counts'], job_counts['job_
 plt.show()
 ``` 
 
-![Top_10_roles](Imágenes\Top_10_roles.png)
+![Top_10_roles](Imágenes/Top_10_roles.png)
 
 Se observa una clara brecha entre los tres puestos con mayor demanda y el resto, representando estos primeros el 70,6% del total de ofertas publicadas. Es un resultado esperable ya que el núcleo del ecosistema de datos actual está formado principalmente por estos roles. 
 
@@ -82,7 +82,7 @@ plt.show()
 ```
 
 
-![ofertas_paises](Imágenes\ofertas_paises.png)
+![ofertas_paises](Imágenes/ofertas_paises.png)
 
 Estados Unidos lidera la lista de países con mayor demanda en ciencia de datos, siendo el epicentro de las grandes tecnológicas (*Big Tech*) y el desarrollo de IA. Siguiéndole está India, posiblemente por ser el principal destino de *outsourcing* para análisis de datos y soporte de ingeniería a gran escala. 
 
@@ -102,7 +102,7 @@ plt.xlabel('Número de ofertas publicadas')
 plt.ylabel('')
 plt.show()
 ```
-![puestos_por_empresa](Imágenes\puestos_por_empresa.png)
+![puestos_por_empresa](Imágenes/puestos_por_empresa.png)
 
 Analizando los cinco primeros puestos cobra más relevancia el *outsourcing* y reclutamiento externo comentado anteriormente. No aparecen gigantes tecnológicos como Google o Meta, sino empresas cuyo modelo de negocio es encontrar talento para terceros. De igual forma, pero a la cola de la lista, aparecen Accenture i Deloitte, dos de las "*Big Four*".
 
@@ -132,7 +132,7 @@ plt.show()
 ```
 
 
-![condiciones_trabajo](Imágenes\condiciones_trabajo.png)
+![condiciones_trabajo](Imágenes/condiciones_trabajo.png)
 
 Se observa que, pese a que algunas empresas apuestan por el teletrabajo, el sector tiende a ser conservador, priorizando la presencialidad. Si bien es cierto que durante la pandemia de 2020 trabajar desde casa se volvió la norma, y existía la opinión generalizada de que dicho modelo prevalecería, los datos muestran que no ha sido así. 
 

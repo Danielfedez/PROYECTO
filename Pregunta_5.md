@@ -30,7 +30,7 @@ df_skills["skill_percent"] = df_skills["skill_count"]*100/total_skills
 df_percentage = df_skills[df_skills["skill_percent"] >= 5]``
 ```
 
-![optimal_skill](Imágenes\optimal_skill.png)
+![optimal_skill](Imágenes/optimal_skill.png)
 
 Una buena forma de visualizar estos datos es con un diagrama de dispersión, donde veamos la correlación entre abundancia y sueldo para cada habilidad. Hacemos algunos ajustes para que la comprensión del diagrama sea más clara. Importamos `adjustText` para que las etiquetas de las habilidades no se solapen.
 
@@ -60,6 +60,6 @@ adjust_text(texts, arrowprops=dict(arrowstyle='->', color='gray'))
 plt.show()
 ```
 
-![optimal_skill_scatter](Imágenes\optimal_skill_scatter.png)
+![optimal_skill_scatter](Imágenes/optimal_skill_scatter.png)
 
 En el extremo derecho, SQL se consolida como la habilidad más solicitada (cerca del 60% de los puestos) pero con un salario medio moderado de $92K, mientras que herramientas de nicho como AWS y Azure ofrecen los salarios más altos, superando los $100K, a pesar de su baja frecuencia en las ofertas. El análisis destaca a Python como la habilidad más equilibrada, combinando una demanda sólida superior al 30% con un atractivo salario de $98K, contrastando drásticamente con herramientas administrativas poco técnicas como Word o PowerPoint, que presentan tanto la menor demanda como la remuneración más baja del ecosistema. 

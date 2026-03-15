@@ -30,7 +30,7 @@ skill_count = tabla.reset_index(name="skill_count")
 skill_count= skill_count[skill_count["job_skills"].isin(top_5)]
 ```
 
-![pivot_month](Imágenes\pivot_month.png)
+![pivot_month](Imágenes/pivot_month.png)
 
 
 
@@ -43,12 +43,12 @@ import calendar
 pivot.index = [calendar.month_abbr[i] for i in pivot.index]
 ```
 
-![pivot_Jan_to_Dec](Imágenes\pivot_Jan_to_Dec.png)
+![pivot_Jan_to_Dec](Imágenes/pivot_Jan_to_Dec.png)
 
 
 Finalmente representamos gráficamente.
 
-![trending_skills](Imágenes\trending_skills.png)
+![trending_skills](Imágenes/trending_skills.png)
 
 
 Esta gráfica de tendencias mensuales revela que, a pesar de las fluctuaciones en el volumen total de vacantes, la jerarquía de las herramientas tecnológicas para los analistas de datos se mantiene extremadamente estable a lo largo del año. SQL lidera de forma indiscutible, consolidándose como el requisito fundamental, seguido por un grupo intermedio muy compacto compuesto por Excel y Python. Es notable observar una estacionalidad compartida entre todas las habilidades: un pico masivo de demanda en enero, seguido de una estabilización con ligeros repuntes en meses como agosto y octubre, lo que sugiere que las empresas ajustan su volumen de contratación de forma uniforme según el ciclo anual del mercado laboral.

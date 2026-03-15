@@ -33,7 +33,7 @@ plt.gca().xaxis.set_major_formatter(ticks_x)
 plt.show()
 ```
 
-![salario_anual](Imágenes\salario_anual.png)
+![salario_anual](Imágenes/salario_anual.png)
 
 La distribución salarial por roles confirma que el sector de los datos presenta una jerarquía económica muy marcada y una alta variabilidad en los puestos de mayor especialización. Los roles de nivel senior, particularmente *Senior Data Scientist* y *Senior Data Engineer*, lideran el mercado con las medianas salariales más altas, situándose consistentemente por encima de los $150K anuales. Por el contrario, perfiles como *Data Analyst* o *Business Analyst* muestran distribuciones más compactas y medianas cercanas a los $100K, lo que sugiere un mercado más estandarizado y con menor dispersión para estos puestos de entrada o de corte menos técnico.
 

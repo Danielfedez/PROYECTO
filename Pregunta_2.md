@@ -28,7 +28,7 @@ df_grouped = df.groupby("job_title_short")["job_skills"].value_counts().reset_in
 ```
 
 
-![groupby_jobskills_skillcounts](Imágenes\groupby_jobskills_skillcounts.png)
+![groupby_jobskills_skillcounts](Imágenes/groupby_jobskills_skillcounts.png)
 
 
 Con tal de que solo aparezcan las 5 habilidades con mayor recuento para cada rol, hacemos un bucle `for` sobre la columna `job_title_short` y especificaremos `head(5)`. Nos aseguramos de que salgan las habilidades con mayor recuento, en vez de las que menos, con `[::-1]`. 
@@ -54,7 +54,7 @@ fig.tight_layout(h_pad=0.5)
 plt.show()
 ```
 
-![skill_count](Imágenes\skill_count.png)
+![skill_count](Imágenes/skill_count.png)
 
 Observamos que SQL y Python destacan sobre el resto de habilidades. Para los tres roles, la capacidad de extraer y manipular datos es cardinal, así como tener un motor técnico de apoyo. Vemos también que conocimientos en herramientas de visualización de datos y hojas de cálculo son muy valoradas para *Data Analyst* y *Data Scientist*, ya que se trata de roles con una importante vertiente en comunicación de resultados. Por su parte, *Data Engineer* destaca por pedir herramientas como AWS, Azure o Spark, más orientadas a la infraestructura, el procesamiento escalable y el almacenamiento de datos en la nube.
 

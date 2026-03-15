@@ -26,9 +26,36 @@ Nos interesa conocer, para cada rol, las habilidades que requiere y el número d
 ```
 df_grouped = df.groupby("job_title_short")["job_skills"].value_counts().reset_index(name="skill_counts")
 ```
-
-
-![groupby_jobskills_skillcounts](Imágenes/groupby_jobskills_skillcounts.png)
+|     | job_title_short   | job_skills      |   skill_counts |
+|----:|:------------------|:----------------|---------------:|
+|   0 | Data Analyst      | sql             |          92428 |
+|   1 | Data Analyst      | excel           |          66860 |
+|   2 | Data Analyst      | python          |          57190 |
+|   3 | Data Analyst      | tableau         |          46455 |
+|   4 | Data Analyst      | power bi        |          39380 |
+|   5 | Data Analyst      | r               |          29996 |
+|   6 | Data Analyst      | sas             |          27998 |
+|   7 | Data Analyst      | powerpoint      |          13822 |
+|   8 | Data Analyst      | word            |          13562 |
+|   9 | Data Analyst      | sap             |          11280 |
+|  10 | Data Analyst      | azure           |          10913 |
+|  11 | Data Analyst      | oracle          |          10387 |
+|  12 | Data Analyst      | aws             |           9047 |
+|  13 | Data Analyst      | sql server      |           8288 |
+|  14 | Data Analyst      | go              |           7905 |
+|  15 | Data Analyst      | flow            |           7259 |
+|  16 | Data Analyst      | vba             |           6841 |
+|  17 | Data Analyst      | looker          |           6259 |
+|  18 | Data Analyst      | snowflake       |           6178 |
+|  19 | Data Analyst      | qlik            |           5681 |
+|  20 | Data Analyst      | java            |           5238 |
+|  21 | Data Analyst      | spark           |           5029 |
+|  22 | Data Analyst      | jira            |           4746 |
+...
+| 707 | Data Scientist    | nuxt.js         |              1 |
+| 708 | Data Scientist    | mattermost      |              1 |
+| 709 | Data Scientist    | wimi            |              1 |
+| 710 | Data Scientist    | shogun          |              1 |
 
 
 Con tal de que solo aparezcan las 5 habilidades con mayor recuento para cada rol, hacemos un bucle `for` sobre la columna `job_title_short` y especificaremos `head(5)`. Nos aseguramos de que salgan las habilidades con mayor recuento, en vez de las que menos, con `[::-1]`. 
@@ -57,6 +84,8 @@ plt.show()
 ![skill_count](Imágenes/skill_count.png)
 
 Observamos que SQL y Python destacan sobre el resto de habilidades. Para los tres roles, la capacidad de extraer y manipular datos es cardinal, así como tener un motor técnico de apoyo. Vemos también que conocimientos en herramientas de visualización de datos y hojas de cálculo son muy valoradas para *Data Analyst* y *Data Scientist*, ya que se trata de roles con una importante vertiente en comunicación de resultados. Por su parte, *Data Engineer* destaca por pedir herramientas como AWS, Azure o Spark, más orientadas a la infraestructura, el procesamiento escalable y el almacenamiento de datos en la nube.
+
+
 
 
 
